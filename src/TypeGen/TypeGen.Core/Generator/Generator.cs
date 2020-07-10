@@ -382,7 +382,7 @@ namespace TypeGen.Core.Generator
                 return GenerateClass(type, new ExportTsClassAttribute { OutputDir = outputDirectory });
             }
 
-            if (typeInfo.IsInterface)
+            if (typeInfo.IsInterface || (type.IsValueType && !type.IsPrimitive))
             {
                 return GenerateInterface(type, new ExportTsInterfaceAttribute { OutputDir = outputDirectory });
             }
