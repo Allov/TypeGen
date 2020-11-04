@@ -624,6 +624,11 @@ namespace TypeGen.Core.Generator
 
             // create TypeScript source code for properties' definition
 
+            if (Options.GenerateJsonNetTypeNameHandling)
+            {
+                propertiesText += _templateService.FillClassPropertyTemplate(string.Empty, "$type", "string", new List<string>());
+            }
+
             propertiesText += memberInfos
                 .Aggregate(propertiesText, (current, memberInfo) => current + GetInterfacePropertyText(memberInfo));
 

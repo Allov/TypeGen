@@ -23,6 +23,7 @@ namespace TypeGen.Core.Generator
         public static bool DefaultCreateIndexFile => false;
         public static StrictNullTypeUnionFlags DefaultCsNullableTranslation => StrictNullTypeUnionFlags.None;
         public static bool DefaultCsAllowNullsForAllTypes = false;
+        public static bool DefaultGenerateJsonNetTypeNameHandling = false;
         public static IDictionary<string, string> DefaultDefaultValuesForTypes => new Dictionary<string, string>();
         public static IDictionary<string, IEnumerable<string>> DefaultTypeUnionsForTypes => new Dictionary<string, IEnumerable<string>>();
         public static IDictionary<string, string> DefaultCustomTypeMappings => new Dictionary<string, string>();
@@ -53,6 +54,7 @@ namespace TypeGen.Core.Generator
             FileHeading = DefaultFileHeading;
             UseDefaultExport = DefaultUseDefaultExport;
             IndexFileExtension = DefaultIndexFileExtension;
+            GenerateJsonNetTypeNameHandling = DefaultGenerateJsonNetTypeNameHandling;
         }
 
         /// <summary>
@@ -131,6 +133,11 @@ namespace TypeGen.Core.Generator
         /// Indicates to allow null for all types.
         /// </summary>
         public bool CsAllowNullsForAllTypes { get; set; }
+
+        /// <summary>
+        /// Whether to generate Json.net $type property for type serialization on interfaces.
+        /// </summary>
+        public bool GenerateJsonNetTypeNameHandling { get; set; }
 
         /// <summary>
         /// Specifies default values to generate for given TypeScript types
